@@ -69,14 +69,20 @@ namespace SoftEngine.SoftEngine
 
             foreach (var pixel in pixels)
             {
-                g.FillRectangle(new SolidBrush(pixel.color),pixel.Position.x,pixel.Position.y,1,1);
+                g.FillRectangle(new SolidBrush(pixel.color), pixel.Position.x, pixel.Position.y, 1, 1);
             }
         }
 
         public void addShape()
         {
-            Shape newShape = new Shape(new Vector2(10, 10), new Vector2(10,20), new Vector2(20,10), new Vector2(20,20), Color.Green);
-            pixels.AddRange(newShape.OutputList());
+            List<Vector2> temp = new List<Vector2>();
+            temp.Add(new Vector2(100, 100));
+            temp.Add(new Vector2(100, 200));
+            temp.Add(new Vector2(200, 300));
+            temp.Add(new Vector2(300, 200));
+            temp.Add(new Vector2(300, 100));
+
+            pixels.AddRange(new Shape(temp).OutputList());
         }
 
         public abstract void OnLoad();

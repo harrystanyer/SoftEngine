@@ -15,21 +15,17 @@ namespace SoftEngine
         public override void OnLoad()
         {
             addShape();
-            pixels.Add(new Pixel(new Vector2(50,50),Color.White));
             BackgroundColour = Color.Black;
         }
 
         public override void OnDraw()
         {
-            
-        }
 
-        int frame = 0;
+        }
 
         public override void OnUpdate()
         {
-            //Console.WriteLine("Frame count"+frame);
-            frame++;
+
         }
     }
 }

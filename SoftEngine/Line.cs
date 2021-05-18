@@ -21,37 +21,73 @@ namespace SoftEngine.SoftEngine
             CreateLine();
             return points;
         }
-        void CreateLine()
+
+        public void CreateLine()//Bresenham algorithm
         {
-            //Find line equation
-            //Find all whole number coordiantes in that range // round to nearest
-            //y = mx+c
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!grad needs to be float/decimal but broken atm
-            int tempX = 0;
-            int tempY = 0;
-            float c = ((float)point2.y - (float)point1.y) / ((float)point2.x - (float)point1.x);
-            Console.WriteLine($"c = {point2.y} - {point1.y} / {point2.x} - {point1.x} ");
-            float m = ((float)point1.y - c) / (float)point1.x;
-            int lowestY = point1.y;
-            int lowestX = point1.x;
-            if (point2.y < point1.y)
+            int x = point1.x;
+            int y = point1.y;
+            int w = point2.x - point1.x;
+            int h = point2.y - point1.y;
+            int dx1 = 0;
+            int dy1 = 0;
+            int dx2 = 0;
+            int dy2 = 0;
+            if (w < 0)
             {
-                lowestY = point2.y;
+                dx1 = -1;
             }
-            if (point2.x < point1.x)
+            else if (w > 0)
             {
-                lowestX = point2.x; 
+                dx1 = 1;
             }
-            Console.WriteLine($"point1:{point1.x},{point1.y}");
-            Console.WriteLine($"point2:{point2.x},{point2.y}");
-            Console.WriteLine($"grad:{c}");
-            for (int i = lowestY; i < Math.Abs(point2.y-point1.y); i++)
+            if (h < 0)
             {
-                Console.WriteLine("happening");
-                tempY = i;
-                tempX = (tempY - (int)Math.Round(c,0)) / (int)Math.Round(m,0);
-                points.Add(new Pixel(new Vector2(tempX,tempY), Color.White));
-                
+                dy1 = -1;
+            }
+            else if (h > 0)
+            {
+                dy1 = 1;
+            }
+            if (w < 0)
+            {
+                dx2 = -1;
+            }
+            else if (w > 0)
+            {
+                dx2 = 1;
+            }
+            int longest = Math.Abs(w);
+            int shortest = Math.Abs(h);
+            if (!(longest > shortest))
+            {
+                longest = Math.Abs(h);
+                shortest = Math.Abs(w);
+                if (h < 0)
+                {
+                    dy2 = -1;
+                }
+                else if (h > 0)
+                {
+                    dy2 = 1;
+                }
+                dx2 = 0;
+            }
+            int numerator = longest >> 1;
+            for (int i = 0; i <= longest; i++)
+            {
+                points.Add(new Pixel(new Vector2(x, y), Color.White));
+                numerator += shortest;
+                if (!(numerator < longest))
+                {
+                    numerator -= longest;
+                    x += dx1;
+                    y += dy1;
+                }
+                else
+                {
+                    x += dx2;
+                    y += dy2;
+                }
             }
         }
     }
