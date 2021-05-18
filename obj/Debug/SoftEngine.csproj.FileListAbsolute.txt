@@ -1,0 +1,14 @@
+E:\Users\conke\source\repos\SoftEngine\bin\Debug\SoftEngine.exe.config
+E:\Users\conke\source\repos\SoftEngine\bin\Debug\SoftEngine.exe
+E:\Users\conke\source\repos\SoftEngine\bin\Debug\SoftEngine.pdb
+E:\Users\conke\source\repos\SoftEngine\obj\Debug\SoftEngine.csprojAssemblyReference.cache
+E:\Users\conke\source\repos\SoftEngine\obj\Debug\SoftEngine.csproj.CoreCompileInputs.cache
+E:\Users\conke\source\repos\SoftEngine\obj\Debug\SoftEngine.exe
+E:\Users\conke\source\repos\SoftEngine\obj\Debug\SoftEngine.pdb
+E:\Users\conke\OneDrive\Documents\gitRepo\SoftEngine\bin\Debug\SoftEngine.exe.config
+E:\Users\conke\OneDrive\Documents\gitRepo\SoftEngine\bin\Debug\SoftEngine.exe
+E:\Users\conke\OneDrive\Documents\gitRepo\SoftEngine\bin\Debug\SoftEngine.pdb
+E:\Users\conke\OneDrive\Documents\gitRepo\SoftEngine\obj\Debug\SoftEngine.csprojAssemblyReference.cache
+E:\Users\conke\OneDrive\Documents\gitRepo\SoftEngine\obj\Debug\SoftEngine.csproj.CoreCompileInputs.cache
+E:\Users\conke\OneDrive\Documents\gitRepo\SoftEngine\obj\Debug\SoftEngine.exe
+E:\Users\conke\OneDrive\Documents\gitRepo\SoftEngine\obj\Debug\SoftEngine.pdb
