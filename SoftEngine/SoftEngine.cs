@@ -63,8 +63,6 @@ namespace SoftEngine.SoftEngine
 
         private void Renderer(object sender, PaintEventArgs e)
         {
-            Console.WriteLine(pixels.Count);
-            Console.WriteLine(pixels.ToList().Count);
             Graphics g = e.Graphics;
 
             g.Clear(BackgroundColour);
@@ -84,18 +82,48 @@ namespace SoftEngine.SoftEngine
         {
             pixels.Clear();
             List<Vector2> temp = new List<Vector2>();
-            temp.Add(new Vector2(110, 110));
-            temp.Add(new Vector2(110, 120));
-            temp.Add(new Vector2(120, 130));
-            temp.Add(new Vector2(130, 120));
-            temp.Add(new Vector2(130, 110));
-            temp.Add(new Vector2(120, 90));
+            temp.Add(new Vector2(100, 100));
+            temp.Add(new Vector2(100, 200));
+            temp.Add(new Vector2(200, 200));
+            temp.Add(new Vector2(200, 100));
 
-            pixels.AddRange(new Shape(temp, Color.Green).OutputList());
+            List<Vector2> temp1 = new List<Vector2>();
+            temp1.Add(new Vector2(200, 200));
+            temp1.Add(new Vector2(200, 300));
+            temp1.Add(new Vector2(300, 300));
+            temp1.Add(new Vector2(300, 200));
 
-            pixels.AddRange(new Shape(rotateShape(temp, new Vector2(100, 100), 3.14 / 2), Color.Red).OutputList());
-            pixels.AddRange(new Shape(rotateShape(temp, new Vector2(100, 300), 3.14), Color.Blue).OutputList());
-            pixels.AddRange(new Shape(rotateShape(temp, new Vector2(200, 300), -3.14 / 2), Color.Yellow).OutputList());
+            List<Vector2> temp2 = new List<Vector2>();
+            temp2.Add(new Vector2(200, 100));
+            temp2.Add(new Vector2(200, 200));
+            temp2.Add(new Vector2(300, 200));
+            temp2.Add(new Vector2(300, 100));
+
+            List<Vector2> temp3 = new List<Vector2>();
+            temp3.Add(new Vector2(100, 200));
+            temp3.Add(new Vector2(100, 300));
+            temp3.Add(new Vector2(200, 300));
+            temp3.Add(new Vector2(200, 200));
+
+            //pixels.AddRange(new Shape(temp, Color.Green).OutputList());
+            //pixels.AddRange(new Shape(temp1, Color.Green).OutputList());
+            //pixels.AddRange(new Shape(temp2, Color.Green).OutputList());
+            //pixels.AddRange(new Shape(temp3, Color.Green).OutputList());
+
+            //something wrong with rotating multiple shapes//point of rotation changes?
+            //pixels.AddRange(new Shape(rotateShape(temp1, new Vector2(100, 100), 3.14 / 4), Color.Red).OutputList());
+            //pixels.AddRange(new Shape(rotateShape(temp2, new Vector2(100, 100), 3.14 / 4), Color.Blue).OutputList());
+            //pixels.AddRange(new Shape(rotateShape(temp3, new Vector2(100, 100), 3.14 / 4), Color.Yellow).OutputList());
+        }
+
+        public void addRectangle(Vector2 origin, int width, int height, Color color, double rotationRad)//check where the width and heights need to go on this.
+        {
+            List<Vector2> temp = new List<Vector2>();
+            temp.Add(new Vector2(origin.x, origin.y));
+            temp.Add(new Vector2(origin.x + width, origin.y));
+            temp.Add(new Vector2(origin.x + width, origin.y + height));
+            temp.Add(new Vector2(origin.x, origin.y + height));
+            pixels.AddRange(new Shape(rotateShape(temp, new Vector2(origin.x + width, origin.y + height), rotationRad), color).OutputList());
         }
 
         public List<Vector2> rotateShape(List<Vector2> points, Vector2 rotationPoint, double angle)
