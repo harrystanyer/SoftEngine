@@ -14,7 +14,6 @@ namespace SoftEngine
 
         public override void OnLoad()
         {
-            addShape();
             BackgroundColour = Color.Black;
         }
 
@@ -25,7 +24,7 @@ namespace SoftEngine
 
         public override void OnUpdate()
         {
-
+            addShape();
         }
     }
 }

@@ -10,13 +10,13 @@ namespace SoftEngine.SoftEngine
     {
         public Vector2 point1 { get; set; }
         public Vector2 point2 { get; set; }
-        private List<Pixel> points = new List<Pixel>();
+        private List<Vector2> points = new List<Vector2>();
         public Line(Vector2 point1, Vector2 point2)
         {
             this.point1 = point1;
             this.point2 = point2;
         }
-        public List<Pixel> OutputList()
+        public List<Vector2> OutputList()
         {
             CreateLine();
             return points;
@@ -75,7 +75,7 @@ namespace SoftEngine.SoftEngine
             int numerator = longest >> 1;
             for (int i = 0; i <= longest; i++)
             {
-                points.Add(new Pixel(new Vector2(x, y), Color.White));
+                points.Add(new Vector2(x, y));
                 numerator += shortest;
                 if (!(numerator < longest))
                 {
