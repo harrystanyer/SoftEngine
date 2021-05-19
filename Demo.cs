@@ -25,10 +25,10 @@ namespace SoftEngine
         public override void OnUpdate()
         {
             addShape();
-            addRectangle(new Vector2(100, 100), 100, 100, Color.Green, 0.8);
-            addRectangle(new Vector2(100, 100), 100, 100, Color.Green, -0.8);
-            addRectangle(new Vector2(100, 100), 100, 100, Color.Green, 2.4);
-            addRectangle(new Vector2(100, 100), 100, 100, Color.Green, -2.4);
+            addRectangle(new Vector2(100, 100), 100, 100, Color.Green, 90);
+            addRectangle(new Vector2(100, 100), 100, 100, Color.Green, 180);
+            addRectangle(new Vector2(100, 100), 100, 100, Color.Green, 270);
+            addRectangle(new Vector2(100, 100), 100, 100, Color.Green, 0);
         }
     }
 }

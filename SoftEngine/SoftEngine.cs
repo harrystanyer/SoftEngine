@@ -129,8 +129,8 @@ namespace SoftEngine.SoftEngine
         public List<Vector2> rotateShape(List<Vector2> points, Vector2 rotationPoint, double angle)
         {
             List<Vector2> outputList = new List<Vector2>();
-            double s = Math.Sin(angle);
-            double c = Math.Cos(angle);
+            double s = Math.Sin(ConvertToRadians(angle));
+            double c = Math.Cos(ConvertToRadians(angle));
             double xNew = 0;
             double yNew = 0;
             foreach (var point in points)
@@ -142,6 +142,10 @@ namespace SoftEngine.SoftEngine
                 outputList.Add(new Vector2((int)Math.Round(xNew + rotationPoint.x, 0), (int)Math.Round(yNew + rotationPoint.y, 0)));
             }
             return outputList;
+        }
+        private double ConvertToRadians(double angle)
+        {
+            return (Math.PI / 180) * angle;
         }
 
         public abstract void OnLoad();
