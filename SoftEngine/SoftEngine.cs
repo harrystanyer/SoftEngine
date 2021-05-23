@@ -69,7 +69,7 @@ namespace SoftEngine.SoftEngine
 
             foreach (var pixel in pixels.ToList())
             {
-                if (pixel.Position.x < 512 && pixel.Position.y < 512)
+                if (pixel.Position.x < 512 && pixel.Position.y < 512)//Only draws if in dimensions of the screen
                 {
                     g.FillRectangle(new SolidBrush(pixel.color), pixel.Position.x, pixel.Position.y, 1, 1);
                 }
@@ -78,42 +78,14 @@ namespace SoftEngine.SoftEngine
             pixels.Clear();
         }
 
-        public void addShape()
+        public void clearPixels()
         {
             pixels.Clear();
-            List<Vector2> temp = new List<Vector2>();
-            temp.Add(new Vector2(100, 100));
-            temp.Add(new Vector2(100, 200));
-            temp.Add(new Vector2(200, 200));
-            temp.Add(new Vector2(200, 100));
+        }
 
-            List<Vector2> temp1 = new List<Vector2>();
-            temp1.Add(new Vector2(200, 200));
-            temp1.Add(new Vector2(200, 300));
-            temp1.Add(new Vector2(300, 300));
-            temp1.Add(new Vector2(300, 200));
-
-            List<Vector2> temp2 = new List<Vector2>();
-            temp2.Add(new Vector2(200, 100));
-            temp2.Add(new Vector2(200, 200));
-            temp2.Add(new Vector2(300, 200));
-            temp2.Add(new Vector2(300, 100));
-
-            List<Vector2> temp3 = new List<Vector2>();
-            temp3.Add(new Vector2(100, 200));
-            temp3.Add(new Vector2(100, 300));
-            temp3.Add(new Vector2(200, 300));
-            temp3.Add(new Vector2(200, 200));
-
-            //pixels.AddRange(new Shape(temp, Color.Green).OutputList());
-            //pixels.AddRange(new Shape(temp1, Color.Green).OutputList());
-            //pixels.AddRange(new Shape(temp2, Color.Green).OutputList());
-            //pixels.AddRange(new Shape(temp3, Color.Green).OutputList());
-
-            //something wrong with rotating multiple shapes//point of rotation changes?
-            //pixels.AddRange(new Shape(rotateShape(temp1, new Vector2(100, 100), 3.14 / 4), Color.Red).OutputList());
-            //pixels.AddRange(new Shape(rotateShape(temp2, new Vector2(100, 100), 3.14 / 4), Color.Blue).OutputList());
-            //pixels.AddRange(new Shape(rotateShape(temp3, new Vector2(100, 100), 3.14 / 4), Color.Yellow).OutputList());
+        public void addShape()//create a base method for creaing shapes with switch for other shapes
+        {
+            
         }
 
         public void addRectangle(Vector2 origin, int width, int height, Color color, double rotationRad)//check where the width and heights need to go on this.
@@ -123,7 +95,7 @@ namespace SoftEngine.SoftEngine
             temp.Add(new Vector2(origin.x + width, origin.y));
             temp.Add(new Vector2(origin.x + width, origin.y + height));
             temp.Add(new Vector2(origin.x, origin.y + height));
-            pixels.AddRange(new Shape(rotateShape(temp, new Vector2(origin.x + width, origin.y + height), rotationRad), color).OutputList());
+            pixels.AddRange(new Shape(rotateShape(temp, new Vector2(origin.x + width/2, origin.y + height/2), rotationRad), color).OutputList());
         }
 
         public List<Vector2> rotateShape(List<Vector2> points, Vector2 rotationPoint, double angle)
@@ -143,6 +115,7 @@ namespace SoftEngine.SoftEngine
             }
             return outputList;
         }
+
         private double ConvertToRadians(double angle)
         {
             return (Math.PI / 180) * angle;
