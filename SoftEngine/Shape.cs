@@ -89,6 +89,8 @@ namespace SoftEngine.SoftEngine
                 yNew = point.x * s + point.y * c;
                 outputList.Add(new Vector2((int)Math.Round(xNew + rotationPoint.x, 0), (int)Math.Round(yNew + rotationPoint.y, 0)));
             }
+            rotationPoint.x = 0;
+            rotationPoint.y = 0;
             return outputList;
         }
 

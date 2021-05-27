@@ -75,7 +75,7 @@ namespace SoftEngine.SoftEngine
                 }
             }
 
-            pixels.Clear();
+            clearPixels();
         }
 
         public void clearPixels()
@@ -83,7 +83,7 @@ namespace SoftEngine.SoftEngine
             pixels.Clear();
         }
 
-        public void addShape(Shape shape)//create a base method for creaing shapes with switch for other shapes
+        public void addShape(Shape shape)//create a base method for creating shapes with switch for other shapes
         {
             pixels.AddRange(shape.OutputList());
         }
