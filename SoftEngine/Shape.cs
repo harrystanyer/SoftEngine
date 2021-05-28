@@ -107,7 +107,7 @@ namespace SoftEngine.SoftEngine
                 point.y += y;
             }
         }
-        public void morphShape()//allows individual points to be morphed
+        public void skewShape()//allows individual points to be morphed
         {
 
         }

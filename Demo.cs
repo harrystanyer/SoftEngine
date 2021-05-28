@@ -24,21 +24,23 @@ namespace SoftEngine
             shape1 = new Shape(temp, Color.Red, 0, new Vector2());
         }
 
-        public override void OnDraw()
+        public override void OnDraw()//rotation of shape objects sets to the origin #bug
         {
-            shape1.moveShape(1, 0);
-            shape1.angle = counter;
+            //shape1.moveShape(1, 0);
+            //shape1.angle = counter;
             counter++;
         }
 
         public override void OnUpdate()
         {
-            addRectangle(new Vector2(100, 100), 150, 150, Color.Green, counter);
-            AddShape(shape1);
+            //addRectangle(new Vector2(100, 100), 150, 150, Color.Green, counter);
+            //AddShape(shape1);
+            addShape(shape1);
         }
 
         private void AddShape(Shape shape)
         {
+            //4 sided shape
             addRectangle(shape1.points[0], 100, 100, shape.color, shape.angle);
         }
     }

@@ -85,7 +85,12 @@ namespace SoftEngine.SoftEngine
 
         public void addShape(Shape shape)//create a base method for creating shapes with switch for other shapes
         {
-            pixels.AddRange(shape.OutputList());
+            pixels.AddRange(new Shape(shape.points, shape.color, shape.angle, shape.rotationPoint).OutputList());
+        }
+        public void addShape(List<Vector2> points, Color color, int angle, Vector2 rotationPoint)//create a base method for creating shapes with switch for other shapes
+        {
+            //pixels.AddRange(shape.OutputList());
+            pixels.AddRange(new Shape(points, color, angle, rotationPoint).OutputList());
         }
 
         public void addRectangle(Vector2 origin, int width, int height, Color color, int angle)//check where the width and heights need to go on this.
