@@ -65,8 +65,6 @@ namespace SoftEngine.SoftEngine
         {
             if (rotationPoint.x == 0 && rotationPoint.y == 0)//if empty rotationPoint then gets the centre of the shape
             {
-                rotationPoint.x = 0;
-                rotationPoint.y = 0;
                 foreach (var point in points)
                 {
                     rotationPoint.x += point.x;
@@ -74,7 +72,6 @@ namespace SoftEngine.SoftEngine
                 }
                 rotationPoint.x /= points.Count;
                 rotationPoint.y /= points.Count;
-
             }
             List<Vector2> outputList = new List<Vector2>();
             double s = Math.Sin(ConvertToRadians(angle));
@@ -88,6 +85,8 @@ namespace SoftEngine.SoftEngine
                 xNew = point.x * c - point.y * s;
                 yNew = point.x * s + point.y * c;
                 outputList.Add(new Vector2((int)Math.Round(xNew + rotationPoint.x, 0), (int)Math.Round(yNew + rotationPoint.y, 0)));
+                point.x += rotationPoint.x;
+                point.y += rotationPoint.y;
             }
             rotationPoint.x = 0;
             rotationPoint.y = 0;

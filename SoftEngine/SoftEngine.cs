@@ -18,7 +18,9 @@ namespace SoftEngine.SoftEngine
     }
     public abstract class SoftEngine
     {
-        private Vector2 ScreenSize = new Vector2(512, 512);
+        public static int screenWidth = 512;
+        public static int screenHeight = 512;
+        private Vector2 ScreenSize = new Vector2(screenWidth, screenHeight);
         private string Title = "SoftEngine";
         private Canvas Window = null;
         private Thread GameLoopThread = null;
@@ -69,7 +71,7 @@ namespace SoftEngine.SoftEngine
 
             foreach (var pixel in pixels.ToList())
             {
-                if (pixel.Position.x < 512 || pixel.Position.y < 512)//Only draws if in dimensions of the screen
+                if (pixel.Position.x < screenWidth || pixel.Position.y < screenHeight)//Only draws if in dimensions of the screen
                 {
                     g.FillRectangle(new SolidBrush(pixel.color), pixel.Position.x, pixel.Position.y, 1, 1);
                 }
@@ -87,13 +89,8 @@ namespace SoftEngine.SoftEngine
         {
             pixels.AddRange(new Shape(shape.points, shape.color, shape.angle, shape.rotationPoint).OutputList());
         }
-        public void addShape(List<Vector2> points, Color color, int angle, Vector2 rotationPoint)//create a base method for creating shapes with switch for other shapes
-        {
-            //pixels.AddRange(shape.OutputList());
-            pixels.AddRange(new Shape(points, color, angle, rotationPoint).OutputList());
-        }
 
-        public void addRectangle(Vector2 origin, int width, int height, Color color, int angle)//check where the width and heights need to go on this.
+        public void addRectangle(Vector2 origin, int width, int height, Color color, int angle)//adds rectangle of specific height and width at certain point
         {
             List<Vector2> pointsList = new List<Vector2>();
             pointsList.Add(new Vector2(origin.x, origin.y));
