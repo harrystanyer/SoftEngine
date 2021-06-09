@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace SoftEngine.SoftEngine
+namespace SoftEngine.SoftEngine//look at making another pixels list and compare with the current then only display the pixels that have changed//might be more efficient
 {
     class Canvas : Form
     {
@@ -85,7 +85,7 @@ namespace SoftEngine.SoftEngine
             pixels.Clear();
         }
 
-        public void addShape(Shape shape)//create a base method for creating shapes with switch for other shapes
+        public void addShape(Shape shape)
         {
             pixels.AddRange(new Shape(shape.points, shape.color, shape.angle, shape.rotationPoint).OutputList());
         }

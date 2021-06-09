@@ -23,13 +23,22 @@ namespace SoftEngine
             temp.Add(new Vector2(150, 250));
             temp.Add(new Vector2(200, 200));
             temp.Add(new Vector2(200, 100));
+            
+            List<Vector2> temp2 = new List<Vector2>();
+            temp2.Add(new Vector2(100, 100));
+            temp2.Add(new Vector2(100, 200));
+            temp2.Add(new Vector2(150, 250));
+            temp2.Add(new Vector2(200, 200));
+            temp2.Add(new Vector2(200, 100));
+
             shape1 = new Shape(temp, Color.Red, 0, new Vector2());
-            shape2 = new Shape(temp, Color.Green, 90, new Vector2());
+            shape2 = new Shape(temp2, Color.Green, 90, new Vector2());
         }
 
-        public override void OnDraw()//rotation of shape objects sets to the origin #bug
+        public override void OnDraw()
         {
-            shape1.moveShape(1, 0);//problem with moving all shapes
+            shape1.moveShape(1, 0);
+            shape2.moveShape(-1, 0);
             shape1.angle = counter;
             shape2.angle = -counter;
             counter++;
