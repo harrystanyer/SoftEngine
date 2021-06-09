@@ -64,7 +64,7 @@ namespace SoftEngine.SoftEngine
 
         public List<Vector2> rotateShape()
         {
-            shapeCentre();
+            rotationPoint = shapeCentre();//can probably rewrite this and shapeCentre function
             List<Vector2> outputList = new List<Vector2>();
             double s = Math.Sin(ConvertToRadians(angle));
             double c = Math.Cos(ConvertToRadians(angle));
@@ -85,18 +85,20 @@ namespace SoftEngine.SoftEngine
             return outputList;
         }
 
-        private void shapeCentre()
+        private Vector2 shapeCentre()//return vector2
         {
-            if (rotationPoint.x == 0 && rotationPoint.y == 0)//if empty rotationPoint then gets the centre of the shape
+            Vector2 output = rotationPoint;
+            if (output.x == 0 && output.y == 0)//if empty rotationPoint then gets the centre of the shape
             {
                 foreach (var point in points)
                 {
-                    rotationPoint.x += point.x;
-                    rotationPoint.y += point.y;
+                    output.x += point.x;
+                    output.y += point.y;
                 }
-                rotationPoint.x /= points.Count;
-                rotationPoint.y /= points.Count;
+                output.x /= points.Count;
+                output.y /= points.Count;
             }
+            return output;
         }
 
         private double ConvertToRadians(double angle)
@@ -112,7 +114,7 @@ namespace SoftEngine.SoftEngine
                 point.y += y;
             }
         }
-        public void fillShape(Vector2 startPoint)//allows individual points to be morphed
+        public void fillShape(Vector2 startPoint)//insert point known to be inside the shape
         {
             //would be everything inside of the lines created
             //foreach point on line a draw a line to corrosponding point on line b // do for all lines
@@ -125,7 +127,6 @@ namespace SoftEngine.SoftEngine
              start the loop upwards and downwards if not out of the area
 
              */
-            startPoint = new Vector2();//find a starting point that is inside of the shape
             int LeftRemaining = DistanceToLeft(startPoint);
             int rightRemaining = DistanceToRight(startPoint);
             for (int i = 0; i < LeftRemaining; i++)
@@ -145,8 +146,8 @@ namespace SoftEngine.SoftEngine
                 fillShape(new Vector2(startPoint.x, startPoint.y - 1));
             }
         }
-        private bool CheckPixel(Vector2 point)
-        {//ray casting
+        private bool CheckPixel(Vector2 point)//ray casting - checks if pixel is inside or outside of shape
+        {//check this might be wrong
             int counter = 0;
             foreach (var pixel in pixels)
             {
@@ -183,7 +184,7 @@ namespace SoftEngine.SoftEngine
             }
             return -1;
         }
-        public void scale(double scale)
+        public void scale(double scale)//scale the object up or down//can be used to zoom in?
         {
 
         }
